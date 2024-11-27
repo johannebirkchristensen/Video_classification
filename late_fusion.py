@@ -99,7 +99,7 @@ class LateFusionModel(nn.Module):
         logits = self.fc1(video_features)  # [batch_size, num_classes]
         logitss = self.fc2(logits)
         return logitss
-def train_and_validate(model, train_loader, val_loader, criterion, optimizer, device, num_epochs=50):
+def train_and_validate(model, train_loader, val_loader, criterion, optimizer, device, num_epochs=150):
     # Gem trænings- og valideringstab og nøjagtighed
     train_losses, train_accuracies = [], []
     val_losses, val_accuracies = [], []  # Korrekt initialisering af listerne
@@ -206,7 +206,7 @@ criterion = nn.CrossEntropyLoss()  # For eksempel
 optimizer = optim.Adam(model.parameters(), lr=1e-3)
 # Træn og valider modellen
 train_losses, train_accuracies, val_losses, val_accuracies = train_and_validate(
-    model, train_loader, val_loader, criterion, optimizer, device, num_epochs=100
+    model, train_loader, val_loader, criterion, optimizer, device, num_epochs=150
 )
 
 # Evaluér modellen på testdatasættet efter træning
